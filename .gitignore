@@ -6,7 +6,8 @@ project.xcworkspace
 .DS_Store
 .idea
 android/build
+android/*.iml
+*.tgz
 Podfile.lock
 WebRTC.xcframework
 WebRTC.dSYMs
-
