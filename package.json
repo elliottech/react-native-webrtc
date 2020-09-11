@@ -6,8 +6,7 @@
     "url": "git+https://github.com/daily-co/react-native-webrtc.git"
   },
   "scripts": {
-    "tag": "scripts/tag",
-    "prepublishOnly": "npm run tag"
+    "postinstall": "cross-os darwin-extract"
   },
   "nativePackage": true,
   "description": "Daily.co fork of WebRTC for React Native",
@@ -32,9 +31,6 @@
   },
   "peerDependencies": {
     "react-native": ">=0.60.0"
-  },
-  "scripts": {
-    "postinstall": "cross-os darwin-extract"
   },
   "cross-os": {
     "darwin-extract": {
