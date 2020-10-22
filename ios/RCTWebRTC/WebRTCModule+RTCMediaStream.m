@@ -279,13 +279,31 @@ RCT_EXPORT_METHOD(mediaStreamTrackSetEnabled:(nonnull NSString *)trackID : (BOOL
   }
 }
 
-RCT_EXPORT_METHOD(mediaStreamTrackSwitchCamera:(nonnull NSString *)trackID)
+RCT_EXPORT_METHOD(mediaStreamTrackSwitchCamera:(nonnull NSString *)trackID
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
 {
   RTCMediaStreamTrack *track = self.localTracks[trackID];
   if (track) {
     RTCVideoTrack *videoTrack = (RTCVideoTrack *)track;
-    [(VideoCaptureController *)videoTrack.captureController switchCamera];
+    NSString *newFacingMode = [(VideoCaptureController *)videoTrack.videoCaptureController switchCamera];
+    resolve(newFacingMode);
+    return;
   }
+  reject(@"invalid_track_id", @"No track found with given ID", nil);
+}
+
+RCT_EXPORT_METHOD(mediaStreamTrackGetCameraFacingMode:(nonnull NSString *)trackID
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+  RTCMediaStreamTrack *track = self.localTracks[trackID];
+  if (track) {
+    RTCVideoTrack *videoTrack = (RTCVideoTrack *)track;
+    resolve([(VideoCaptureController *)videoTrack.videoCaptureController facingMode]);
+    return;
+  }
+  reject(@"invalid_track_id", @"No track found with given ID", nil);
 }
 
 #pragma mark - Helpers
