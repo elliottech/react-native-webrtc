@@ -991,7 +991,7 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
         }
     }
 
-    /// Daily.co-specific functionality
+    /// Daily-specific functionality
 
     private  DailyAudioManager dailyAudioManager;
 
