@@ -290,7 +290,9 @@ RCT_EXPORT_METHOD(mediaStreamTrackSwitchCamera:(nonnull NSString *)trackID
     resolve(newFacingMode);
     return;
   }
-  reject(@"invalid_track_id", @"No track found with given ID", nil);
+  reject(@"switch_camera_error",
+         @"Local track not found when attempting to switch camera",
+         nil);
 }
 
 RCT_EXPORT_METHOD(mediaStreamTrackGetCameraFacingMode:(nonnull NSString *)trackID
@@ -303,7 +305,9 @@ RCT_EXPORT_METHOD(mediaStreamTrackGetCameraFacingMode:(nonnull NSString *)trackI
     resolve([(VideoCaptureController *)videoTrack.videoCaptureController facingMode]);
     return;
   }
-  reject(@"invalid_track_id", @"No track found with given ID", nil);
+  reject(@"get_camera_facing_mode_error",
+         @"Local track not found when attempting to get camera facing mode",
+         nil);
 }
 
 #pragma mark - Helpers
