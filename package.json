@@ -1,6 +1,6 @@
 {
-  "name": "@daily-co/react-native-webrtc",
-  "version": "1.89.2-daily.3",
+  "name": "@elliottech/react-native-webrtc",
+  "version": "1.90.0-elliottech",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daily-co/react-native-webrtc.git"
@@ -24,7 +24,8 @@
     "prop-types": "^15.5.10",
     "uuid": "^3.3.2",
     "@types/react": "*",
-    "@types/react-native": "*"
+    "@types/react-native": "*",
+    "tar": "6.1.11"
   },
   "peerDependencies": {
     "react-native": ">=0.60.0"
